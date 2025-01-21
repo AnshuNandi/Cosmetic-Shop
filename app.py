@@ -2,17 +2,22 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'pomp')
 
 # Database configuration
 db_config = {
-    'host': "sql12.freesqldatabase.com",
-    'user': "sql12758809",
-    'password': "7NvP64HLgN",  
-    'database': "sql12758809",
+    'host': os.getenv('DB_HOST', 'localhost'),
+    'user': os.getenv('DB_USER', 'root'),
+    'password': os.getenv('DB_PASSWORD', ''),
+    'database': os.getenv('DB_NAME', 'test'),
     'charset': "latin1"
 }
 

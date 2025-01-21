@@ -200,6 +200,13 @@ def export_to_csv(table):
     return jsonify({'message': f"Data exported to {csv_file}"})
 
 
+
 if __name__ == '__main__':
+    # Initialize the database (if required)
     initialize_database()
-    app.run(debug=False)
+    
+    # Get the port from the environment variable, or default to 5000
+    port = int(os.environ.get("PORT", 5000)) 
+    
+    # Run the Flask app with host set to 0.0.0.0 (to be accessible on Render)
+    app.run(host="0.0.0.0", port=port, debug=False)

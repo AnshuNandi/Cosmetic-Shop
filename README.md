@@ -75,6 +75,10 @@ The system uses the following database tables:
      DB_NAME=cosmetic_shop
      PORT=5000
      ```
+   - Generate a secure secret key using:
+     ```bash
+     python -c 'import secrets; print(secrets.token_hex(16))'
+     ```
 
 6. **Initialize the database**
    - The application will automatically create all required tables on first run
@@ -89,9 +93,11 @@ The system uses the following database tables:
 2. **Access the application**
    - Open your web browser and navigate to: `http://localhost:5000`
 
-3. **Login credentials**
+3. **Login credentials** (default credentials - change for production use)
    - **Username**: `admin` | **Password**: `admin`
    - **Username**: `user` | **Password**: `user`
+   
+   > ⚠️ **Security Note**: These are default credentials for development only. For production deployment, modify the `users` dictionary in `app.py` with secure passwords.
 
 4. **Navigate through the dashboard**
    - Manage Employees
@@ -138,7 +144,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source.
 
 ## Author
 
